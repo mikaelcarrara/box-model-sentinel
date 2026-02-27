@@ -1,0 +1,14 @@
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .hero { padding: 100px 24px 60px; }
+  .hero-stats { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:last-child { border-bottom: none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .ba-cards { grid-template-columns: 1fr; }
+  .detector-list { grid-template-columns: 1fr; }
+  .modes-grid { grid-template-columns: 1fr; }
+  .code-section, .features-section, .beforeafter-section, .detectors-section, .modes-section { padding-left: 24px; padding-right: 24px; }
+  .cta-section { padding: 80px 24px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}

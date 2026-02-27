@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box Model Sentinel — CSS Layout Integrity for VS Code</title>
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <img src="img/logo.svg" alt="Box Model Sentinel">
+  <a href="https://marketplace.visualstudio.com/items?itemName=mikaelmc.box-model-sentinel" target="_blank" rel="noopener noreferrer" class="nav-cta">Install Free →</a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <h1>
+    Real-time detection of layout failures before production
+  </h1>
+  <p class="hero-sub">
+    Box Model Sentinel monitors your CSS in <strong>real-time</strong>, catching the fixed pixels, rigid flex containers, and overflow traps that silently break your UI on smaller screens.
+  </p>
+  <div class="hero-actions">
+    <a href="https://marketplace.visualstudio.com/items?itemName=mikaelmc.box-model-sentinel" target="_blank" rel="noopener noreferrer" class="btn-primary">Install on VS Code</a>
+    <a href="#detectors" class="btn-ghost">See what it catches →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Specialized Detectors</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">500ms</span>
+      <span class="stat-label">Analysis Latency</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Severity Levels</span>
+    </div>
+  </div>
+</section>
+
+<!-- CODE PREVIEW -->
+<section class="code-section">
+  <p class="section-label">// Catch issues before they ship</p>
+  <div class="code-window">
+    <div class="code-titlebar">
+      <div class="titlebar-dot"></div>
+      <div class="titlebar-dot"></div>
+      <div class="titlebar-dot"></div>
+      <span class="titlebar-name">styles.css</span>
+    </div>
+    <div class="code-body">
+      <div class="code-line">
+        <span class="ln">1</span>
+        <span class="code-text"><span class="selector">.hero</span> <span class="punct">{</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">2</span>
+        <span class="code-text">&nbsp;&nbsp;<span class="prop">width</span><span class="punct">:</span> <span class="squiggle val-bad">100vw</span><span class="punct">;</span>
+        <span class="diag medium">⚠ Medium — use 100% instead</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">3</span>
+        <span class="code-text">&nbsp;&nbsp;<span class="prop">height</span><span class="punct">:</span> <span class="squiggle val-bad">600px</span><span class="punct">;</span>
+        <span class="diag critical">🚫 Critical — fixed height breaks small screens</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">4</span>
+        <span class="code-text"><span class="punct">}</span></span>
+      </div>
+      <div class="code-line code-line-spaced">
+        <span class="ln">6</span>
+        <span class="code-text"><span class="selector">.cards</span> <span class="punct">{</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">7</span>
+        <span class="code-text">&nbsp;&nbsp;<span class="prop">display</span><span class="punct">:</span> <span class="val-ok">flex</span><span class="punct">;</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">8</span>
+        <span class="code-text">&nbsp;&nbsp;<span class="prop">flex-wrap</span><span class="punct">:</span> <span class="squiggle val-bad">nowrap</span><span class="punct">;</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">9</span>
+        <span class="code-text">&nbsp;&nbsp;<span class="prop">flex-basis</span><span class="punct">:</span> <span class="squiggle val-bad">200px</span><span class="punct">;</span>
+        <span class="diag critical">🚫 Critical — nowrap + fixed basis = guaranteed overflow</span></span>
+      </div>
+      <div class="code-line">
+        <span class="ln">10</span>
+        <span class="code-text"><span class="punct">}</span></span>
+      </div>
+      <div class="code-line code-line-spaced">
+        <span class="ln">12</span>
+        <span class="code-text"><span class="selector">body</span> <span class="punct">{</span> <span class="prop">overflow-x</span><span class="punct">:</span> <span class="squiggle warn val-bad">hidden</span><span class="punct">;</span> <span class="punct">}</span>
+        <span class="diag medium">⚠ Medium — masking structural overflow</span></span>
+      </div>
+      <div class="code-line code-line-spaced">
+        <span class="ln">14</span>
+        <span class="code-text"><span class="comment">/* ↑ All of this, caught while you type */</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-header">
+    <div class="section-label">// What you get</div>
+    <h2>Static analysis.<br>Real-time feedback.</h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <img src="img/icon-01.svg" alt="Real-Time as You Type icon">
+      <div class="feature-title">Real-Time as You Type</div>
+      <p class="feature-desc">500ms debounce — analysis runs continuously while you code. Squiggles appear instantly. No save, no build, no deploy required.</p>
+    </div>
+    <div class="feature-card">
+      <img src="img/icon-02.svg" alt="Actionable Diagnostics icon">
+      <div class="feature-title">Actionable Diagnostics</div>
+      <p class="feature-desc">Every underlined issue includes hover context: what broke, why it's risky, and a concrete suggestion to fix it.</p>
+    </div>
+    <div class="feature-card">
+      <img src="img/icon-03.svg" alt="Stats Panel icon">
+      <div class="feature-title">Stats Panel</div>
+      <p class="feature-desc">Dedicated panel with severity filtering, click-to-navigate, and auto-refresh. See your layout health at a glance.</p>
+    </div>
+    <div class="feature-card">
+      <img src="img/icon-04.svg" alt="3-Level Severity icon">
+      <div class="feature-title">3-Level Severity</div>
+      <p class="feature-desc">Critical, Medium, Info. Triage issues by actual impact, not by file order. Focus on what breaks first.</p>
+    </div>
+    <div class="feature-card">
+      <img src="img/icon-05.svg" alt="Two Modes icon">
+      <div class="feature-title">Two Modes</div>
+      <p class="feature-desc">Strict for new projects. Pragmatic with configurable thresholds for legacy codebases. Switch without restarting VS Code.</p>
+    </div>
+    <div class="feature-card">
+      <img src="img/icon-06.svg" alt="Ready-Only icon">
+      <div class="feature-title">Ready-Only</div>
+      <p class="feature-desc">Sentinel never touches your code. No auto-fixes, no rewrites. Pure structural analysis — your changes, your call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="beforeafter-section">
+  <div class="section-header">
+    <div class="section-label">// Visual diff inside VS Code</div>
+    <h2>Not just a warning.<br>A fix direction.</h2>
+  </div>
+  <p class="beforeafter-sub">Every issue in the Stats Panel comes with a BEFORE/AFTER visual comparison — rendered directly in VS Code, no browser needed.</p>
+
+  <div class="ba-cards">
+
+    <div class="ba-card sev-critical">
+      <div class="ba-card-header">
+        <span class="ba-type critical">FLEX FRAGILITY — CRITICAL</span>
+      </div>
+      <div class="ba-body">
+        <div class="ba-col">
+          <div class="ba-label before">BEFORE</div>
+          <div class="ba-visual">
+            <div class="ba-flex-row nowrap">
+              <div class="ba-chip ba-example-before"></div>
+              <div class="ba-chip ba-example-before"></div>
+              <div class="ba-chip overflow"></div>
+            </div>
+          </div>
+          <div class="ba-code bad">✕ flex-wrap: nowrap</div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-col">
+          <div class="ba-label after">AFTER</div>
+          <div class="ba-visual">
+            <div class="ba-flex-row wrap">
+              <div class="ba-chip ba-example-after"></div>
+              <div class="ba-chip ba-example-after"></div>
+              <div class="ba-chip ba-example-after"></div>
+            </div>
+          </div>
+          <div class="ba-code good">✓ flex-wrap: wrap</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ba-card sev-medium">
+      <div class="ba-card-header">
+        <span class="ba-type medium">GRID RIGIDITY — MEDIUM</span>
+      </div>
+      <div class="ba-body">
+        <div class="ba-col">
+          <div class="ba-label before">BEFORE</div>
+          <div class="ba-visual">
+            <div class="ba-grid rigid-grid">
+              <div class="ba-cell ba-example-before"></div>
+              <div class="ba-cell ba-example-before"></div>
+              <div class="ba-cell overflow-cell"></div>
+            </div>
+          </div>
+          <div class="ba-code bad">✕ 200px 200px 200px</div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-col">
+          <div class="ba-label after">AFTER</div>
+          <div class="ba-visual">
+            <div class="ba-grid fluid-grid">
+              <div class="ba-cell ba-example-after"></div>
+              <div class="ba-cell ba-example-after"></div>
+              <div class="ba-cell ba-example-after"></div>
+            </div>
+          </div>
+          <div class="ba-code good">✓ repeat(3, 1fr)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ba-card sev-low">
+      <div class="ba-card-header">
+        <span class="ba-type low">!IMPORTANT ON LAYOUT — LOW</span>
+      </div>
+      <div class="ba-body">
+        <div class="ba-col">
+          <div class="ba-label before">BEFORE</div>
+          <div class="ba-visual">
+            <div class="ba-important-row">
+              <div class="ba-imp-block locked"></div>
+              <div class="ba-imp-block locked small"></div>
+            </div>
+          </div>
+          <div class="ba-code bad">✕ width: 100% !important</div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-col">
+          <div class="ba-label after">AFTER</div>
+          <div class="ba-visual">
+            <div class="ba-important-row">
+              <div class="ba-imp-block"></div>
+              <div class="ba-imp-block small"></div>
+            </div>
+          </div>
+          <div class="ba-code good">✓ width: 100%</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DETECTORS -->
+<section id="detectors" class="detectors-section">
+  <div class="section-header">
+    <div class="section-label">// 12 specialized detectors</div>
+    <h2>Every pattern<br>that breaks layouts.</h2>
+  </div>
+
+  <div class="detector-list">
+    <div class="detector-item">
+      <span class="detector-num">01</span>
+      <div>
+        <div class="detector-name">Fixed Dimensions</div>
+        <div class="detector-ex">width: 400px · height: 600px → Critical</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">02</span>
+      <div>
+        <div class="detector-name">Box-Sizing Inconsistency</div>
+        <div class="detector-ex">Mixed border-box / content-box</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">03</span>
+      <div>
+        <div class="detector-name">Horizontal Overflow Risk</div>
+        <div class="detector-ex">Fixed width + overflow-x: visible</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">04</span>
+      <div>
+        <div class="detector-name">Fixed Spacing</div>
+        <div class="detector-ex">padding / margin / gap without breakpoints</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">05</span>
+      <div>
+        <div class="detector-name">100vw Overflow</div>
+        <div class="detector-ex">width: 100vw ignores scrollbar width</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">06</span>
+      <div>
+        <div class="detector-name">Flex Fragility</div>
+        <div class="detector-ex">nowrap + fixed flex-basis → Critical</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">07</span>
+      <div>
+        <div class="detector-name">Grid Rigidity</div>
+        <div class="detector-ex">grid-template-columns: 250px 250px</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">08</span>
+      <div>
+        <div class="detector-name">Absolute Positioning Rigidity</div>
+        <div class="detector-ex">Fixed left/top/width on position: absolute</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">09</span>
+      <div>
+        <div class="detector-name">Media Query Instability</div>
+        <div class="detector-ex">Same property changing across breakpoints</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">10</span>
+      <div>
+        <div class="detector-name">Overflow Masking</div>
+        <div class="detector-ex">body { overflow-x: hidden } hides problems</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">11</span>
+      <div>
+        <div class="detector-name">!important on Layout</div>
+        <div class="detector-ex">width: 100% !important — rigidity signal</div>
+      </div>
+    </div>
+    <div class="detector-item">
+      <span class="detector-num">12</span>
+      <div>
+        <div class="detector-name">Breakpoint Width Exceeded</div>
+        <div class="detector-ex">@media (max-width: 768px) { width: 800px }</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODES -->
+<section class="modes-section">
+  <div class="section-header">
+    <div class="section-label">// Analysis modes</div>
+    <h2>Works on new projects.<br>Works on legacy code.</h2>
+  </div>
+
+  <div class="modes-grid">
+    <div class="mode-card active">
+      <div class="mode-badge strict">Strict</div>
+      <div class="mode-title">Zero tolerance.</div>
+      <p class="mode-desc">Every fixed pixel, every rigid track, every non-fluid pattern gets flagged. 100% structural detection, no exceptions.</p>
+      <div class="mode-tags">
+        <span class="mode-tag">New projects</span>
+        <span class="mode-tag">Design systems</span>
+        <span class="mode-tag">Learning responsive</span>
+        <span class="mode-tag">Zero fixed dimensions</span>
+      </div>
+    </div>
+    <div class="mode-card pragmatic">
+      <div class="mode-badge pragmatic">Pragmatic</div>
+      <div class="mode-title">Signal over noise.</div>
+      <p class="mode-desc">Configurable thresholds suppress small, safe values. Focus on the issues that actually break layouts — not padding: 8px.</p>
+      <div class="mode-tags">
+        <span class="mode-tag">Legacy codebases</span>
+        <span class="mode-tag">Large teams</span>
+        <span class="mode-tag">Alert fatigue</span>
+        <span class="mode-tag">Established design systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / INSTALL -->
+<section id="install" class="cta-section">
+  <p class="section-label">// Get started in 30 seconds</p>
+  <h2>Stop shipping broken layouts.</h2>
+  <p class="cta-sub">Free. No account. No telemetry. Just better CSS.</p>
+  <div>
+    <div class="install-cmd">
+      <span>ext install</span> box-model-sentinel
+    </div>
+  </div>
+  <div class="hero-actions">
+    <a href="https://marketplace.visualstudio.com/items?itemName=mikaelmc.box-model-sentinel" target="_blank" rel="noopener noreferrer" class="btn-primary">Open in VS Code Marketplace</a>
+    <a href="https://github.com/mikaelcarrara/box-model-sentinel" target="_blank" rel="noopener noreferrer" class="btn-ghost">View on GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-note">
+   <strong>&copy; 2026 Mikael Carrara</strong> · MIT License · Not affiliated with Microsoft or VS Code
+  </div>
+  <div class="footer-note">
+    Made with ❤️ for better CSS layouts · <a href="https://github.com/mikaelcarrara/box-model-sentinel" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.querySelector('nav');
+    if (!nav) return;
+    function update() {
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('load', update);
+    update();
+  })();
+  </script>
+
+</body>
+</html>

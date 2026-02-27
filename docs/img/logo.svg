@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" width="420" height="100">
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-strong" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="sentinel-clip">
+      <rect x="116" y="56" width="172" height="44"/>
+    </clipPath>
+  </defs>
+
+  <!-- =============================================
+       ICON — draws from outside in, then dot pops
+       ============================================= -->
+
+  <!-- LAYER 1: Outer dashed box — stroke draws in (t=0.1s → 0.7s) -->
+  <!-- Perimeter of 92x92 rect = 368. stroke-dasharray=368, dashoffset animates 368→0 -->
+  <rect x="4" y="4" width="92" height="92"
+    fill="none" stroke="#FF4D6A" stroke-width="1.5"
+    stroke-dasharray="6 3"
+    opacity="0">
+    <animate attributeName="opacity" values="0;0.5" dur="0.1s" begin="0.1s" fill="freeze"/>
+    <!-- fade in first then the dashes are already there via dasharray — enough for illusion -->
+    <animate attributeName="stroke-dashoffset" values="368;0" dur="0.6s" begin="0.1s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- Corner ticks — appear with the outer box -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.2s" begin="0.3s" fill="freeze"/>
+    <line x1="4" y1="4" x2="18" y2="4" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="4" y1="4" x2="4" y2="18" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="96" y1="4" x2="82" y2="4" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="96" y1="4" x2="96" y2="18" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="4" y1="96" x2="18" y2="96" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="4" y1="96" x2="4" y2="82" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="96" y1="96" x2="82" y2="96" stroke="#FF4D6A" stroke-width="2.5"/>
+    <line x1="96" y1="96" x2="96" y2="82" stroke="#FF4D6A" stroke-width="2.5"/>
+  </g>
+
+  <!-- LAYER 2: Inner margin box (t=0.6s → 1.0s) perimeter=288 -->
+  <rect x="14" y="14" width="72" height="72"
+    fill="none" stroke="#FF4D6A" stroke-width="1"
+    stroke-dasharray="288" stroke-dashoffset="288"
+    opacity="0.3">
+    <animate attributeName="stroke-dashoffset" values="288;0" dur="0.4s" begin="0.6s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- LAYER 3: Padding box (t=0.9s → 1.2s) perimeter=192 -->
+  <rect x="26" y="26" width="48" height="48"
+    fill="none" stroke="#FF4D6A" stroke-width="1"
+    stroke-dasharray="192" stroke-dashoffset="192"
+    opacity="0.2">
+    <animate attributeName="stroke-dashoffset" values="192;0" dur="0.35s" begin="0.9s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- LAYER 4: Content box fill + border (t=1.1s → 1.5s) perimeter=128 -->
+  <rect x="34" y="34" width="32" height="32" rx="1"
+    fill="#FF4D6A" opacity="0">
+    <animate attributeName="opacity" values="0;0.15" dur="0.3s" begin="1.2s" fill="freeze"/>
+  </rect>
+  <rect x="34" y="34" width="32" height="32" rx="1"
+    fill="none" stroke="#FF4D6A" stroke-width="2"
+    stroke-dasharray="128" stroke-dashoffset="128">
+    <animate attributeName="stroke-dashoffset" values="128;0" dur="0.35s" begin="1.1s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- LAYER 5: Crosshair lines (t=1.4s → 1.7s) -->
+  <!-- Vertical line, draws from center out -->
+  <line x1="50" y1="50" x2="50" y2="50" stroke="#FF4D6A" stroke-width="1" opacity="0.7">
+    <animate attributeName="y1" values="50;34" dur="0.2s" begin="1.45s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y2" values="50;66" dur="0.2s" begin="1.45s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </line>
+  <line x1="50" y1="50" x2="50" y2="50" stroke="#FF4D6A" stroke-width="1" opacity="0.7">
+    <animate attributeName="x1" values="50;34" dur="0.2s" begin="1.55s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="x2" values="50;66" dur="0.2s" begin="1.55s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </line>
+
+  <!-- LAYER 6: Center dot — pops in with scale + glow (t=1.75s) -->
+
+  <!-- Pulse ring — infinite, starts after dot appears -->
+  <circle cx="50" cy="50" r="4" fill="none" stroke="#FF4D6A" stroke-width="1.5" opacity="0">
+    <animate attributeName="r" values="4;14" dur="1.4s" begin="2.15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.8 1"/>
+    <animate attributeName="opacity" values="0.7;0" dur="1.4s" begin="2.15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.8 1"/>
+    <animate attributeName="stroke-width" values="1.5;0.3" dur="1.4s" begin="2.15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.8 1"/>
+  </circle>
+
+  <!-- Dot itself -->
+  <circle cx="50" cy="50" r="0" fill="#FF4D6A" filter="url(#glow-strong)">
+    <animate attributeName="r" values="0;6;4" dur="0.4s" begin="1.75s" fill="freeze" calcMode="spline" keySplines="0.2 0 0.2 1.5;0.4 0 0.6 1"/>
+  </circle>
+
+  <!-- =============================================
+       WORDMARK
+       ============================================= -->
+
+  <!-- BOX MODEL — fade in (t=2.1s → 2.6s) -->
+  <text
+    x="116" y="46"
+    font-family="'Courier New', 'Lucida Console', monospace"
+    font-weight="700"
+    font-size="22"
+    letter-spacing="4"
+    fill="#FFFFFF"
+    opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.1s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    BOX MODEL
+  </text>
+
+  <!-- SENTINEL — slides from left + fade in (t=2.6s → 3.1s) -->
+  <g clip-path="url(#sentinel-clip)">
+    <text
+      x="96" y="76"
+      font-family="'Courier New', 'Lucida Console', monospace"
+      font-weight="700"
+      font-size="22"
+      letter-spacing="9.5"
+      fill="#FF4D6A"
+      opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.65s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="x" values="86;116" dur="0.5s" begin="2.65s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      SENTINEL
+    </text>
+  </g>
+
+</svg>

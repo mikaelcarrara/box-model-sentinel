@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <filter id="glow-tog" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-knob" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ══════════════════════════════════════
+       TOGGLE 1 — alterna ON→OFF→ON
+       trilho: x=10 y=18 width=44 height=12 rx=6
+       knob ON  = cx=48 (direita, rosa)
+       knob OFF = cx=16 (esquerda, roxo)
+       ciclo: 0s ON, 1.2s troca pra OFF, 2.4s troca pra ON, loop 3.6s
+       ══════════════════════════════════════ -->
+
+  <!-- Trilho ghost -->
+  <rect x="10" y="18" width="44" height="12" rx="6" fill="#7B7FA6" opacity="0.15"/>
+
+  <!-- Trilho fill — rosa quando ON, roxo quando OFF -->
+  <rect x="10" y="18" width="44" height="12" rx="6" fill="#FF4D6A" opacity="0">
+    <animate attributeName="opacity"
+      values="0;0;0.35;0.35;0;0"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="10" y="18" width="44" height="12" rx="6" fill="#7B7FA6" opacity="0">
+    <animate attributeName="opacity"
+      values="0.25;0.25;0;0;0.25;0.25"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Borda do trilho -->
+  <rect x="10" y="18" width="44" height="12" rx="6" fill="none" stroke="#7B7FA6" stroke-width="1.2" opacity="0.5">
+    <animate attributeName="stroke"
+      values="#7B7FA6;#7B7FA6;#FF4D6A;#FF4D6A;#7B7FA6;#7B7FA6"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity"
+      values="0.5;0.5;0.8;0.8;0.5;0.5"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Knob 1 — desliza esquerda↔direita -->
+  <circle cy="24" r="5" fill="#7B7FA6" filter="url(#glow-knob)">
+    <!-- posição x: OFF=16, ON=48 -->
+    <animate attributeName="cx"
+      values="16;16;48;48;16;16"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1;0 0 1 1"/>
+    <animate attributeName="fill"
+      values="#7B7FA6;#7B7FA6;#FF4D6A;#FF4D6A;#7B7FA6;#7B7FA6"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Glow extra quando ON -->
+  <circle cy="24" r="5" fill="#FF4D6A" opacity="0" filter="url(#glow-tog)">
+    <animate attributeName="cx"
+      values="16;16;48;48;16;16"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1;0 0 1 1"/>
+    <animate attributeName="opacity"
+      values="0;0;0.5;0.5;0;0"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ══════════════════════════════════════
+       TOGGLE 2 — oposto ao 1 (OFF→ON→OFF)
+       defasado: começa ON, troca pra OFF, volta ON
+       trilho: y=36
+       ══════════════════════════════════════ -->
+
+  <!-- Trilho ghost -->
+  <rect x="10" y="36" width="44" height="12" rx="6" fill="#7B7FA6" opacity="0.15"/>
+
+  <!-- Trilho fill toggle 2 — inverso do 1 -->
+  <rect x="10" y="36" width="44" height="12" rx="6" fill="#FF4D6A" opacity="0">
+    <animate attributeName="opacity"
+      values="0.35;0.35;0;0;0.35;0.35"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="10" y="36" width="44" height="12" rx="6" fill="#7B7FA6" opacity="0">
+    <animate attributeName="opacity"
+      values="0;0;0.25;0.25;0;0"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Borda toggle 2 -->
+  <rect x="10" y="36" width="44" height="12" rx="6" fill="none" stroke="#FF4D6A" stroke-width="1.2" opacity="0.8">
+    <animate attributeName="stroke"
+      values="#FF4D6A;#FF4D6A;#7B7FA6;#7B7FA6;#FF4D6A;#FF4D6A"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity"
+      values="0.8;0.8;0.5;0.5;0.8;0.8"
+      keyTimes="0;0.29;0.33;0.62;0.66;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Knob 2 — começa ON (direita), vai pra OFF (esquerda), volta -->
+  <circle cy="42" r="5" fill="#FF4D6A" filter="url(#glow-knob)">
+    <animate attributeName="cx"
+      values="48;48;16;16;48;48"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1;0 0 1 1"/>
+    <animate attributeName="fill"
+      values="#FF4D6A;#FF4D6A;#7B7FA6;#7B7FA6;#FF4D6A;#FF4D6A"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Glow extra quando ON -->
+  <circle cy="42" r="5" fill="#FF4D6A" opacity="0.5" filter="url(#glow-tog)">
+    <animate attributeName="cx"
+      values="48;48;16;16;48;48"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"
+      calcMode="spline"
+      keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1;0 0 1 1"/>
+    <animate attributeName="opacity"
+      values="0.5;0.5;0;0;0.5;0.5"
+      keyTimes="0;0.29;0.36;0.62;0.69;1"
+      dur="3.6s" repeatCount="indefinite"/>
+  </circle>
+
+</svg>

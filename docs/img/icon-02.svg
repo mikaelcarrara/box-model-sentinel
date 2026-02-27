@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <filter id="glow-lens" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-dot" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clip para manter os rings dentro da lupa -->
+    <clipPath id="lens-clip">
+      <circle cx="26" cy="26" r="16"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Lupa: círculo base fill (roxo escuro) ── -->
+  <circle cx="26" cy="26" r="16" fill="#7B7FA6" opacity="0.08"/>
+
+  <!-- ── Ring de scan pulsando dentro da lupa ── -->
+  <circle cx="26" cy="26" r="4" fill="none" stroke="#FF4D6A" stroke-width="1"
+    clip-path="url(#lens-clip)" opacity="0">
+    <animate attributeName="r"       values="4;16;16"    keyTimes="0;0.7;1" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0.8;0;0"    keyTimes="0;0.7;1" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-width" values="1.5;0.3;0.3" keyTimes="0;0.7;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ── Segundo ring (defasado 0.7s) ── -->
+  <circle cx="26" cy="26" r="4" fill="none" stroke="#FF4D6A" stroke-width="1"
+    clip-path="url(#lens-clip)" opacity="0">
+    <animate attributeName="r"       values="4;16;16"    keyTimes="0;0.7;1" dur="2s" begin="0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0.5;0;0"    keyTimes="0;0.7;1" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-width" values="1;0.2;0.2" keyTimes="0;0.7;1" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ── Crosshair horizontal (roxo) ── -->
+  <line x1="12" y1="26" x2="40" y2="26" stroke="#7B7FA6" stroke-width="0.8" opacity="0.4"
+    clip-path="url(#lens-clip)"/>
+
+  <!-- ── Crosshair vertical (roxo) ── -->
+  <line x1="26" y1="12" x2="26" y2="40" stroke="#7B7FA6" stroke-width="0.8" opacity="0.4"
+    clip-path="url(#lens-clip)"/>
+
+  <!-- ── Ponto central — pisca rosa ── -->
+  <circle cx="26" cy="26" r="2.5" fill="#FF4D6A" filter="url(#glow-dot)">
+    <animate attributeName="r"       values="2;3.5;2"   dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+    <animate attributeName="opacity" values="1;0.5;1"   dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ── Borda da lupa (gradiente roxo→rosa via stroke animado) ── -->
+  <circle cx="26" cy="26" r="16"
+    fill="none"
+    stroke="#7B7FA6"
+    stroke-width="1.8"
+    opacity="0.6">
+    <!-- stroke-dasharray scan girando -->
+    <animateTransform attributeName="transform" type="rotate"
+      values="0 26 26;360 26 26"
+      dur="4s" repeatCount="indefinite" calcMode="linear"/>
+    <animate attributeName="stroke-dasharray" values="8 92;30 70;8 92" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke"           values="#7B7FA6;#FF4D6A;#7B7FA6" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity"          values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ── Borda da lupa fixa (fina, sempre visível) ── -->
+  <circle cx="26" cy="26" r="16" fill="none" stroke="#7B7FA6" stroke-width="1" opacity="0.25"/>
+
+  <!-- ── Cabo da lupa ── -->
+  <line x1="38" y1="38" x2="52" y2="52"
+    stroke="#7B7FA6" stroke-width="3.5"
+    stroke-linecap="round"
+    opacity="0.7"/>
+
+  <!-- ── Cabo highlight (rosa sutil que percorre o cabo) ── -->
+  <line x1="38" y1="38" x2="38" y2="38"
+    stroke="#FF4D6A" stroke-width="2"
+    stroke-linecap="round"
+    opacity="0">
+    <animate attributeName="x2" values="38;52" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y2" values="38;52" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="opacity" values="0;0.8;0" keyTimes="0;0.5;1" dur="2s" repeatCount="indefinite"/>
+  </line>
+
+</svg>

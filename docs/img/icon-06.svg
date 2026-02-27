@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <filter id="glow-eye" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-iris" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- clip para manter elementos dentro do olho -->
+    <clipPath id="eye-clip">
+      <ellipse cx="27" cy="30" rx="20" ry="11"/>
+    </clipPath>
+  </defs>
+
+  <!-- ══════════════════════════════════════
+       OLHO
+       ══════════════════════════════════════ -->
+
+  <!-- Pálpebra ghost fill -->
+  <ellipse cx="27" cy="30" rx="20" ry="11" fill="#7B7FA6" opacity="0.07"/>
+
+  <!-- Scan line varrendo de cima para baixo dentro do olho -->
+  <rect x="7" y="19" width="40" height="1.5" fill="#FF4D6A" opacity="0" clip-path="url(#eye-clip)" filter="url(#glow-eye)">
+    <animate attributeName="y"       values="19;41;19"  dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+    <animate attributeName="opacity" values="0;0.5;0"   dur="2.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Contorno do olho — pálpebra superior -->
+  <path d="M7,30 Q17,16 27,16 Q37,16 47,30"
+    fill="none" stroke="#7B7FA6" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke"  values="#7B7FA6;#FF4D6A;#7B7FA6" dur="2.2s" repeatCount="indefinite"/>
+  </path>
+  <!-- Pálpebra inferior -->
+  <path d="M7,30 Q17,44 27,44 Q37,44 47,30"
+    fill="none" stroke="#7B7FA6" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke"  values="#7B7FA6;#FF4D6A;#7B7FA6" dur="2.2s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Iris -->
+  <circle cx="27" cy="30" r="7" fill="#7B7FA6" opacity="0.15"/>
+  <circle cx="27" cy="30" r="7" fill="none" stroke="#7B7FA6" stroke-width="1.2" opacity="0.5">
+    <animate attributeName="stroke"  values="#7B7FA6;#FF4D6A;#7B7FA6" dur="2.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.9;0.5"              dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Pupila — pulsa -->
+  <circle cx="27" cy="30" r="3" fill="#FF4D6A" filter="url(#glow-iris)">
+    <animate attributeName="r"       values="3;4.5;3"   dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+    <animate attributeName="opacity" values="1;0.6;1"   dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Reflexo na pupila -->
+  <circle cx="29" cy="28" r="1" fill="#ffffff" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+
+
+
+  <!-- ══════════════════════════════════════
+       CADEADO — canto inferior direito
+       ══════════════════════════════════════ -->
+
+  <!-- Corpo do cadeado -->
+  <rect x="40" y="40" width="14" height="11" rx="2"
+    fill="#7B7FA6" opacity="0.2"/>
+  <rect x="40" y="40" width="14" height="11" rx="2"
+    fill="none" stroke="#7B7FA6" stroke-width="1.3" opacity="0.7">
+    <animate attributeName="stroke"  values="#7B7FA6;#FF4D6A;#7B7FA6" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.7;1;0.7"               dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Argola do cadeado -->
+  <path d="M43,40 L43,36 Q47,32 51,36 L51,40"
+    fill="none" stroke="#7B7FA6" stroke-width="1.3" stroke-linecap="round" opacity="0.7">
+    <animate attributeName="stroke"  values="#7B7FA6;#FF4D6A;#7B7FA6" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.7;1;0.7"               dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Buraco da chave — pulsa rosa -->
+  <circle cx="47" cy="46" r="1.8" fill="#FF4D6A" opacity="0.8" filter="url(#glow-eye)">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+    <animate attributeName="r"       values="1.8;2.5;1.8" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+  </circle>
+
+</svg>

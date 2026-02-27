@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <filter id="glow-bar" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-top" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gradiente vertical roxo (topo) → rosa (base) para cada barra -->
+    <linearGradient id="bar-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7B7FA6"/>
+      <stop offset="100%" stop-color="#FF4D6A"/>
+    </linearGradient>
+
+    <!-- Clip geral para manter tudo dentro do ícone -->
+    <clipPath id="icon-clip">
+      <rect x="8" y="8" width="48" height="48"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Linha base (eixo X) ── -->
+  <line x1="10" y1="52" x2="54" y2="52" stroke="#7B7FA6" stroke-width="1" opacity="0.4"/>
+  <!-- ── Eixo Y sutil ── -->
+  <line x1="10" y1="10" x2="10" y2="52" stroke="#7B7FA6" stroke-width="1" opacity="0.2"/>
+
+  <!-- ══════════════════════════════════════
+       BARRA 1 — a menor, à esquerda
+       altura final: 18px  (y=34, height=18)
+       ══════════════════════════════════════ -->
+  <!-- Fill roxo base -->
+  <rect x="15" y="34" width="9" height="18" fill="#7B7FA6" opacity="0.2" rx="1"/>
+  <!-- Fill animado (cresce de 0 → 18) -->
+  <rect x="15" y="52" width="9" height="0" fill="url(#bar-grad)" opacity="0.85" rx="1">
+    <!-- cresce -->
+    <animate attributeName="height" values="0;18;18;0"   keyTimes="0;0.3;0.75;1" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+    <animate attributeName="y"      values="52;34;34;52" keyTimes="0;0.3;0.75;1" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+  </rect>
+  <!-- Topo brilhante -->
+  <rect x="15" y="34" width="9" height="2" fill="#FF4D6A" opacity="0" rx="1" filter="url(#glow-top)">
+    <animate attributeName="opacity" values="0;1;1;0"   keyTimes="0;0.3;0.75;1" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="y"       values="52;34;34;52" keyTimes="0;0.3;0.75;1" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- ══════════════════════════════════════
+       BARRA 2 — média, ao centro
+       altura final: 30px  (y=22, height=30)
+       defasada 0.15s
+       ══════════════════════════════════════ -->
+  <rect x="28" y="22" width="9" height="30" fill="#7B7FA6" opacity="0.2" rx="1"/>
+  <rect x="28" y="52" width="9" height="0" fill="url(#bar-grad)" opacity="0.85" rx="1">
+    <animate attributeName="height" values="0;30;30;0"   keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+    <animate attributeName="y"      values="52;22;22;52" keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+  </rect>
+  <rect x="28" y="22" width="9" height="2" fill="#FF4D6A" opacity="0" rx="1" filter="url(#glow-top)">
+    <animate attributeName="opacity" values="0;1;1;0"   keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.15s" repeatCount="indefinite"/>
+    <animate attributeName="y"       values="52;22;22;52" keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- ══════════════════════════════════════
+       BARRA 3 — a maior, à direita
+       altura final: 40px  (y=12, height=40)
+       defasada 0.30s
+       ══════════════════════════════════════ -->
+  <rect x="41" y="12" width="9" height="40" fill="#7B7FA6" opacity="0.2" rx="1"/>
+  <rect x="41" y="52" width="9" height="0" fill="url(#bar-grad)" opacity="0.85" rx="1">
+    <animate attributeName="height" values="0;40;40;0"   keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+    <animate attributeName="y"      values="52;12;12;52" keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+  </rect>
+  <rect x="41" y="12" width="9" height="2" fill="#FF4D6A" opacity="0" rx="1" filter="url(#glow-top)">
+    <animate attributeName="opacity" values="0;1;1;0"   keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.3s" repeatCount="indefinite"/>
+    <animate attributeName="y"       values="52;12;12;52" keyTimes="0;0.3;0.75;1" dur="2.4s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+  </rect>
+
+  <!-- ── Linha de scan horizontal que desce varrendo as barras ── -->
+  <line x1="10" y1="10" x2="54" y2="10" stroke="#FF4D6A" stroke-width="0.8" opacity="0" clip-path="url(#icon-clip)">
+    <animate attributeName="y1"      values="10;52;52"  keyTimes="0;0.5;1" dur="2.4s" begin="0.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0 0 1 1"/>
+    <animate attributeName="y2"      values="10;52;52"  keyTimes="0;0.5;1" dur="2.4s" begin="0.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0;0.6;0"   keyTimes="0;0.4;1" dur="2.4s" begin="0.1s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- ── Dot no topo da linha de scan ── -->
+  <circle cx="10" cy="10" r="1.5" fill="#FF4D6A" opacity="0" filter="url(#glow-bar)">
+    <animate attributeName="cy"      values="10;52;52"  keyTimes="0;0.5;1" dur="2.4s" begin="0.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0;0.9;0"   keyTimes="0;0.4;1" dur="2.4s" begin="0.1s" repeatCount="indefinite"/>
+  </circle>
+
+</svg>

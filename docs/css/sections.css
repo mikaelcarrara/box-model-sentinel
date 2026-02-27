@@ -21,9 +21,9 @@
   display: inline-block;
 }
 .hero h1 {
-  font-size: 4rem;
+  font-size: clamp(28px, 7vw, 64px);
   font-weight: 800;
-  line-height: 4.5rem;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   max-width: 900px;
   margin-bottom: 32px;

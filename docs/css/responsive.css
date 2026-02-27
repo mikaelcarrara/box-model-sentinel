@@ -12,3 +12,9 @@
   .cta-section { padding: 80px 24px; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
 }
+
+@media (max-width: 520px) {
+  .hero { padding: 80px 20px 48px; }
+  .hero-sub { font-size: 14px; }
+  .hero-stats { margin-top: 48px; }
+}

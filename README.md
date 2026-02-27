@@ -344,6 +344,11 @@ Box Model Sentinel doesn't "ban" pixels. It identifies **when** and **where** ri
 ---
 
 ## 📦 Release Notes
+ 
+### 1.1.9
+- Marketplace README streamlined for end users (removed contributor/dev sections)
+- Added “Getting Started” quick steps
+- No behavior changes; analysis logic unchanged
 
 ### 1.1.8
 - Added official extension icon at resources/icon.png

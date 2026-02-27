@@ -2,7 +2,7 @@
   "name": "box-model-sentinel",
   "displayName": "Box Model Sentinel",
   "description": "Real-time CSS box model analysis and responsive design validation",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "publisher": "mikaelmc",
   "icon": "resources/icon.png",
   "engines": {

@@ -428,6 +428,20 @@ Box Model Sentinel doesn't "ban" pixels. It identifies **when** and **where** ri
 
 ---
 
+## 📦 Release Notes
+
+### 1.1.8
+- Adicionado ícone da extensão em resources/icon.png
+- Atualizados ignores (.gitignore e .vscodeignore) para excluir .kiro/ e *.vsix
+- Atualizado badge de versão no README
+
+### 1.1.7
+- Renomeação para box-model-sentinel
+- Publisher ajustado para mikaelmc
+- URLs do repositório atualizadas para mikaelcarrara/box-model-sentinel
+
+---
+
 ## 🤝 Integration with AI Assistants
 
 Box Model Sentinel produces structural diagnostics in real-time. You can optionally use AI extensions (GitHub Copilot, VS Code AI) to complement these signals with contextual fix suggestions.

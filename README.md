@@ -431,14 +431,14 @@ Box Model Sentinel doesn't "ban" pixels. It identifies **when** and **where** ri
 ## 📦 Release Notes
 
 ### 1.1.8
-- Adicionado ícone da extensão em resources/icon.png
-- Atualizados ignores (.gitignore e .vscodeignore) para excluir .kiro/ e *.vsix
-- Atualizado badge de versão no README
+- Added official extension icon at resources/icon.png
+- Packaging hygiene: exclude .kiro/ and *.vsix from VSIX and repository
+- README updated with version badge 1.1.8
 
 ### 1.1.7
-- Renomeação para box-model-sentinel
-- Publisher ajustado para mikaelmc
-- URLs do repositório atualizadas para mikaelcarrara/box-model-sentinel
+- Renamed extension to box-model-sentinel
+- Publisher set to mikaelmc
+- Repository URLs updated to mikaelcarrara/box-model-sentinel
 
 ---
 

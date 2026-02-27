@@ -35,15 +35,6 @@ And more. **In real-time**, as you type.
 3. Search for "Box Model Sentinel"
 4. Click Install
 
-### Development Mode
-
-```bash
-git clone https://github.com/mikaelcarrara/box-model-sentinel.git
-cd box-model-sentinel
-npm install
-code --extensionDevelopmentPath=. TEST-EXAMPLE.css
-```
-
 ---
 
 ## 📖 Features
@@ -321,96 +312,7 @@ body { overflow-x: hidden; }        /* ⚠️ Both modes: always reported */
 
 ---
 
-## 🧩 Architecture
-
-### Project Structure
-
-```
-box-model-sentinel/
-├── src/
-│   ├── engine/
-│   │   ├── lint-engine.js        # Analysis engine (listeners + diagnostics)
-│   │   ├── parser.js             # CSS parser with @media support
-│   │   ├── issue-classifier.js   # Type classification (flex/grid/overflow/other)
-│   │   ├── stats-model.js        # buildStatsModel(issues) for counts/items
-│   │   └── formatter.js          # Markdown formatter for hover messages
-│   ├── extension/
-│   │   ├── extension.js          # Entry point (webview panel)
-│   │   └── hover-provider.js     # Hover provider
-│   └── ui/
-│       ├── stats-panel.js        # HTML generator for panel (CSP + nonce)
-│       └── assets/
-│           ├── stats.css         # Panel styles (VS Code tokens)
-│           └── stats.js          # List renderer (read-only)
-├── extension.js                  # Root delegator
-├── package.json                  # Extension configuration
-├── README.md                     # This file
-└── TEST-EXAMPLE.css              # Test file
-```
-
-### Key Components
-
-#### LintEngine (`src/engine/lint-engine.js`)
-- **Debounced analysis** with configurable delay
-- **12 specialized detectors** for different issue types
-- **Diagnostic collection** integration with VS Code
-- **Issue caching** by URI for performance
-- **Analysis listeners** for reactive updates
-
-#### Parser (`src/engine/parser.js`)
-- **CSS comment stripping**
-- **Declaration parsing** (property: value pairs)
-- **@media query support** with nested rule extraction
-- **Brace-matching algorithm** for complex nesting
-
-#### Stats Panel (`src/ui/stats-panel.js` + `assets/`)
-- **CSP-compliant** HTML generation with nonce
-- **Reactive filtering** by severity
-- **Click-to-navigate** to issue location
-- **Auto-refresh** on analysis completion
-- **Persistent state** between tab switches
-
-#### Hover Provider (`src/extension/hover-provider.js`)
-- **Rich markdown** hover messages
-- **Severity icons** (🚫/⚠️/ℹ️)
-- **Structured information** (Explanation / Impact / Suggestion)
-- **Unit highlighting** in text (px, rem, vw)
-
----
-
-## 🧪 Testing
-
-### Quick Test
-
-```bash
-# 1. Navigate to directory
-cd box-model-sentinel
-
-# 2. Install dependencies
-npm install
-
-# 3. Open in dev mode
-code --extensionDevelopmentPath=. TEST-EXAMPLE.css
-
-# 4. Wait ~500ms for analysis
-# → Squiggles appear automatically
-
-# 5. Open stats panel
-# F1 → Box Model Sentinel: Show Stats
-```
-
-### Available Scripts
-
-```bash
-# Activation diagnostics
-npm run diagnose
-
-# Open in development mode
-npm run dev
-
-# Create release package
-npm run release
-```
+ 
 
 ---
 
@@ -513,30 +415,7 @@ Found a bug?
 
 ---
 
-## 🛣️ Roadmap
-
-### Current Features ✅
-- ✅ Real-time analysis with 12 detectors
-- ✅ Rich hover messages with markdown
-- ✅ Stats panel with severity filtering
-- ✅ Click-to-navigate to issue location
-- ✅ Configurable analysis modes (strict/pragmatic)
-- ✅ Selector ignore patterns
-- ✅ Support for CSS/SCSS/LESS/SASS
-
-### Planned Features 🚧
-- [ ] Quick fix code actions
-- [ ] Custom rule configuration
-- [ ] Export reports (JSON/HTML)
-- [ ] Performance profiling for large files
-- [ ] Unit test coverage
-- [ ] CI/CD integration examples
-
----
-
-## ⚖️ Disclaimer
-
-This project is independent and not affiliated with, endorsed by, or maintained by Microsoft, Visual Studio Code, VS Code, GitHub, or GitHub Copilot.
+ 
 
 "Microsoft", "Visual Studio Code", "VS Code", and "GitHub" are trademarks of their respective owners. Mentions of these tools serve exclusively to describe compatibility and optional integration.
 

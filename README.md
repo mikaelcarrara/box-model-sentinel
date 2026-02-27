@@ -37,6 +37,19 @@ And more. **In real-time**, as you type.
 
 ---
 
+## ⚡ Getting Started
+
+1. Install the extension from the Marketplace
+2. Open any CSS/SCSS/LESS/SASS file
+3. Wait ~500ms for real-time analysis to complete
+4. Hover on underlined lines to see severity, impact, and fix suggestions
+5. Open the Stats panel for a full list of issues  
+   - Command: Box Model Sentinel: Show Stats (F1 or Ctrl+Shift+P)
+6. Optional: Adjust settings in VS Code  
+   - boxModelSentinel.mode: strict | pragmatic  
+   - boxModelSentinel.fixedWidthThreshold, fixedHeightThreshold, fixedSpacingThreshold  
+   - boxModelSentinel.ignoreSelectors
+
 ## 📖 Features
 
 ### 🔍 Real-time Analysis

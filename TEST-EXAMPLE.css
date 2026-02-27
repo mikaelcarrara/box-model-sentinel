@@ -1,0 +1,121 @@
+/* Example CSS file to test Layout Integrity Sentinel
+   This file showcases various responsive design issues
+   that the extension should detect in real-time
+*/
+
+/* ❌ ISSUE: Fixed dimensions (critical) */
+.card {
+  width: 400px;
+  height: 600px;
+  padding: 20px;
+  background: white;
+}
+
+/* ❌ ISSUE: Fixed width only (medium) */
+.sidebar {
+  width: 300px;
+  background: #f5f5f5;
+}
+
+/* ❌ ISSUE: Horizontal overflow risk */
+.container {
+  width: 1200px;
+  overflow-x: visible;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+1
+/* ❌ ISSUE: Viewport width with scrollbar */
+.hero {
+  width: 100vw;
+  height: 500px;
+  background-image: url('./bg.jpg');
+}
+
+/* ❌ ISSUE: Body overflow masking */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ❌ ISSUE: Flex without wrap + fixed basis */
+.flex-row {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-basis: 200px;
+}
+
+/* ❌ ISSUE: Grid with rigid tracks */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  grid-template-rows: 100px;
+}
+
+/* ❌ ISSUE: Absolute positioning with fixed pixels */
+.modal {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  width: 500px;
+  z-index: 1000;
+}
+
+/* ❌ ISSUE: !important on layout properties */
+.alert {
+  width: 100% !important;
+  margin: 10px !important;
+}
+
+/* ❌ ISSUE: Fixed pixel spacing */
+.text-box {
+  padding: 20px;
+  margin: 15px;
+}
+
+/* ✅ GOOD: Responsive units */
+.responsive-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  margin: 0 auto;
+}
+
+/* ✅ GOOD: Flex with wrap */
+.flex-wrap-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ✅ GOOD: Grid with fr units */
+.good-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Responsive breakpoint */
+@media (max-width: 768px) {
+  .card {
+    /* ❌ ISSUE: Width changes within media query */
+    width: 350px;
+    padding: 15px;
+  }
+
+  .container {
+    width: 800px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+}

@@ -1,0 +1,32 @@
+/* Test file for ASCII Visualizer Integration */
+
+.card {
+  width: 600px; /* Fixed width - should trigger visualization */
+  height: 400px; /* Fixed height - should trigger visualization */
+  padding: 32px; /* Fixed spacing */
+}
+
+.hero {
+  width: 100vw; /* Viewport overflow issue */
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap; /* Flex fragility */
+  flex-basis: 300px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px; /* Grid rigidity */
+}
+
+body {
+  overflow-x: hidden; /* Body overflow masking */
+}
+
+.absolute-box {
+  position: absolute;
+  left: 100px; /* Absolute positioning rigidity */
+  width: 500px;
+}

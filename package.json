@@ -1,0 +1,143 @@
+{
+  "name": "box-model-sentinel",
+  "displayName": "Box Model Sentinel",
+  "description": "Real-time CSS box model analysis and responsive design validation",
+  "version": "1.1.7",
+  "publisher": "mikaelmc",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "css",
+    "responsive",
+    "layout",
+    "box-model",
+    "responsive-design",
+    "accessibility"
+  ],
+  "main": "./src/extension/extension.js",
+  "activationEvents": [
+    "onLanguage:css",
+    "onLanguage:scss",
+    "onLanguage:less",
+    "onLanguage:sass",
+    "onCommand:box-model-sentinel.showStats",
+    "onCommand:box-model-sentinel.test"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "box-model-sentinel.test",
+        "title": "Box Model Sentinel: Test"
+      },
+      {
+        "command": "box-model-sentinel.showStats",
+        "title": "Box Model Sentinel: Show Stats"
+      }
+    ],
+    "languages": [
+      {
+        "id": "css",
+        "extensions": [
+          ".css"
+        ],
+        "filenames": []
+      },
+      {
+        "id": "scss",
+        "extensions": [
+          ".scss"
+        ],
+        "filenames": []
+      },
+      {
+        "id": "less",
+        "extensions": [
+          ".less"
+        ],
+        "filenames": []
+      },
+      {
+        "id": "sass",
+        "extensions": [
+          ".sass"
+        ],
+        "filenames": []
+      }
+    ],
+    "configuration": {
+      "title": "Box Model Sentinel",
+      "properties": {
+        "boxModelSentinel.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Box Model Sentinel analysis"
+        },
+        "boxModelSentinel.mode": {
+          "type": "string",
+          "enum": [
+            "strict",
+            "pragmatic"
+          ],
+          "default": "strict",
+          "description": "Analysis mode: strict reports all rigid px; pragmatic applies thresholds"
+        },
+        "boxModelSentinel.fixedWidthThreshold": {
+          "type": "number",
+          "default": 320,
+          "description": "Threshold in px for fixed widths in pragmatic mode"
+        },
+        "boxModelSentinel.fixedHeightThreshold": {
+          "type": "number",
+          "default": 320,
+          "description": "Threshold in px for fixed heights in pragmatic mode"
+        },
+        "boxModelSentinel.fixedSpacingThreshold": {
+          "type": "number",
+          "default": 24,
+          "description": "Threshold in px for spacing (padding, margin, gap) in pragmatic mode"
+        },
+        "boxModelSentinel.ignoreSelectors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Selectors to ignore (simple includes match, case-insensitive)"
+        },
+        "boxModelSentinel.debounceMs": {
+          "type": "number",
+          "default": 500,
+          "description": "Debounce delay in milliseconds for analysis"
+        },
+        "boxModelSentinel.maxProblems": {
+          "type": "number",
+          "default": 100,
+          "description": "Maximum number of problems to report per file"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "diagnose": "node ./test-activation.js",
+    "dev": "code --extensionDevelopmentPath=.",
+    "release": "npm version patch --no-git-tag-version && node ./scripts/release.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.0.0",
+    "fast-check": "^4.5.3",
+    "jest": "^30.2.0",
+    "ovsx": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikaelcarrara/box-model-sentinel"
+  }
+}

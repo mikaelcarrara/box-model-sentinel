@@ -60,7 +60,7 @@ class BaseGenerator {
    * @returns {string[]} Array of header lines
    */
   renderHeader(data) {
-    const title = `${data.type.toUpperCase()} ${CHARS.DOT} ${data.severityEmoji} ${CHARS.DOT} L${data.line}`;
+    const title = `${data.type.toUpperCase()} ${CHARS.DOT} ${data.severityEmoji} ${CHARS.DOT} L${(data.line ?? 0) + 1}`;
     const padding = this.maxWidth - 2;
     
     return [

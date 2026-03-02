@@ -210,7 +210,7 @@ describe('All Generators Integration', () => {
     testIssues.forEach((issue) => {
       const result = visualizer.generate(issue);
       
-      expect(result.ascii).toContain(`L${issue.line}`);
+      expect(result.ascii).toContain(`L${issue.line + 1}`);
     });
   });
 

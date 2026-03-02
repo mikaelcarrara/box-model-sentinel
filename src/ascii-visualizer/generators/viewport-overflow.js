@@ -57,14 +57,6 @@ class ViewportOverflowGenerator extends BaseGenerator {
       afterContent
     );
   }
-    const ascii = lines.join('\n');
-    return {
-      ascii,
-      width: this.maxWidth,
-      height: lines.length,
-      generationTime: 0, // Set by visualizer
-    };
-  }
 
   /**
    * Render viewport with overflow

@@ -47,7 +47,7 @@
 
 /**
  * @typedef {Object} LayoutData
- * @property {string} label - Label (e.g., "ANTES", "DEPOIS")
+ * @property {string} label - Label (e.g., "BEFORE", "AFTER")
  * @property {string} statusEmoji - Status emoji (❌ or ✅)
  * @property {string[]} content - Array of content lines
  * @property {string} measurements - Measurement text (e.g., "600px width")

@@ -58,10 +58,6 @@ class OverflowHorizontalGenerator extends BaseGenerator {
       afterContent
     );
   }
-      height: lines.length,
-      generationTime: 0, // Set by visualizer
-    };
-  }
 
   /**
    * Render horizontal overflow with scrollbar

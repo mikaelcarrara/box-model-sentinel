@@ -57,9 +57,6 @@ class FixedSpacingGenerator extends BaseGenerator {
       afterContent
     );
   }
-      generationTime: 0, // Set by visualizer
-    };
-  }
 
   /**
    * Render fixed spacing visualization

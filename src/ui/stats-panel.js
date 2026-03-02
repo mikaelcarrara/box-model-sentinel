@@ -22,7 +22,7 @@ function getStatsHtml(model, webview, extensionUri) {
     `connect-src ${webview.cspSource}`
   ].join('; ');
   return `
-  <html lang="pt-BR">
+  <html lang="en-US">
   <head>
     <meta http-equiv="Content-Security-Policy" content="${csp}">
     <meta charset="UTF-8" />

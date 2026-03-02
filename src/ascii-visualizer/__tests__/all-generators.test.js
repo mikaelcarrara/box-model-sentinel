@@ -174,12 +174,12 @@ describe('All Generators Integration', () => {
     });
   });
 
-  test('should include ANTES and DEPOIS labels in all visualizations', () => {
+  test('should include BEFORE and AFTER labels in all visualizations', () => {
     testIssues.forEach((issue) => {
       const result = visualizer.generate(issue);
       
-      expect(result.ascii).toContain('ANTES');
-      expect(result.ascii).toContain('DEPOIS');
+      expect(result.ascii).toContain('BEFORE');
+      expect(result.ascii).toContain('AFTER');
     });
   });
 

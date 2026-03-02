@@ -278,15 +278,15 @@ const html = renderer.render(ascii);
 ```javascript
 const ascii = `Viewport width overflow • ⚠️ Medium • L42
 ┌────────────────────────────────────────────┐
-│  ANTES                  DEPOIS             │
+│  BEFORE                 AFTER              │
 │  width: 100vw          width: 100%         │
 │  ┌──────────┐▓        ┌──────────┐        │
 │  │ content  │▓        │ content  │        │
 │  │ ████████ │▓        │ ████████ │        │
 │  └──────────┘▓        └──────────┘        │
-│  ▓ = scrollbar         sem overflow       │
+│  ▓ = scrollbar         no overflow        │
 │                                            │
-│  ❌ scroll horizontal   ✅ ajuste perfeito │
+│  ❌ horizontal scroll   ✅ perfect fit     │
 └────────────────────────────────────────────┘`;
 
 const html = renderer.render(ascii);

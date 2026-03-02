@@ -2,7 +2,7 @@
 
 > Real-time CSS layout integrity analysis for responsive design
 
-[![Version](https://img.shields.io/badge/version-1.1.9-blue)](https://github.com/mikaelcarrara/box-model-sentinel)
+[![Version](https://img.shields.io/badge/version-2.1.3-blue)](https://github.com/mikaelcarrara/box-model-sentinel)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 **Box Model Sentinel** is a VS Code extension that monitors CSS files in real-time, detecting box model integrity issues and responsiveness problems that break layouts on smaller devices.
@@ -345,6 +345,15 @@ Box Model Sentinel doesn't "ban" pixels. It identifies **when** and **where** ri
 
 ## 📦 Release Notes
  
+### 2.1.3
+- Stats panel spacing tuned: +5px above “Compare”, −5px below
+- “Compare” link is semibold; code block renders inline (no full-width stretch)
+- Visualization labels standardized to English: BEFORE / AFTER
+- Webview language set to en-US
+- Docs: installation command uses Marketplace ID (`code --install-extension mikaelmc.box-model-sentinel`)
+- Packaging: exclude `.kiro/` in VSIX
+- Diagnostics: repository link fixed
+
 ### 1.1.9
 - Marketplace README streamlined for end users (removed contributor/dev sections)
 - Added “Getting Started” quick steps

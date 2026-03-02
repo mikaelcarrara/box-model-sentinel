@@ -8,8 +8,8 @@ body { font-family: Segoe UI, sans-serif; margin: 0; padding: 16px; }
 .item-head { display: flex; align-items: flex-start; gap: 8px; }
 .title { color: var(--vscode-foreground, #ddd); font-size: 14px; font-weight: 600; line-height: 1.25; margin-bottom: 6px; }
 .title .type { color: var(--vscode-descriptionForeground, #9a9a9a); font-size: 12px; margin-left: 6px; font-weight: 500; }
-.line-badge { margin-left: auto; background: var(--vscode-editorWidget-background, #2b2b2b); color: var(--vscode-foreground, #ddd); border: none; padding: 2px 8px; border-radius: 0; font-size: 12px; font-weight: 700; cursor: pointer; transition: color .15s ease, text-decoration-color .15s ease; }
-.line-badge:hover { color: var(--vscode-textLink-activeForeground, #0e639c); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.line-badge { margin-left: auto; background: #232323; color: var(--vscode-foreground, #ddd); border: 1px solid #323232; padding: 2px 8px; border-radius: 0; font-size: 12px; font-weight: 700; cursor: pointer; transition: color .15s ease; }
+.line-badge:hover { color: var(--vscode-textLink-activeForeground, #0e639c); text-decoration: none; }
 .item-body { margin-top: 10px; margin-bottom: 12px; color: var(--vscode-descriptionForeground, #b0b0b0); font-size: 12px; line-height: 1.6; }
 .solution { margin-top: 16px; margin-bottom: 14px; background: #232323; border: 1px solid #323232; border-radius: 0; padding: 8px 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; line-height: 1.4; white-space: pre-wrap; }
 .visualization-container { margin-top: 10px; }

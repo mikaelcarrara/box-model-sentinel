@@ -13,7 +13,7 @@ body { font-family: Segoe UI, sans-serif; margin: 0; padding: 16px; }
 .item-body { margin-top: 10px; margin-bottom: 12px; color: var(--vscode-descriptionForeground, #b0b0b0); font-size: 12px; line-height: 1.6; }
 .solution { margin-top: 16px; margin-bottom: 14px; background: #232323; border: 1px solid #323232; border-radius: 0; padding: 8px 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; line-height: 1.4; white-space: pre-wrap; }
 .visualization-container { margin-top: 10px; }
-.visualization-container summary { list-style: none; cursor: pointer; padding: 0; margin: 0; }
+.visualization-container summary { list-style: none; cursor: pointer; padding: 0; margin-top: 14px; margin-bottom: 4px; }
 .visualization-container summary::-webkit-details-marker { display: none; }
 
 .counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 16px 0 28px 0; }

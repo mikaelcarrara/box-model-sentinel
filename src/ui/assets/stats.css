@@ -1,6 +1,6 @@
 body { font-family: Segoe UI, sans-serif; margin: 0; padding: 16px; }
 .list { border-radius: 8px; border: none; margin-top: 20px; padding: 0; }
-.item { position: relative; display: block; padding: 24px 22px; border: none; border-left: 6px solid transparent; border-radius: 0; background: var(--vscode-editorWidget-background, #2b2b2b); }
+.item { position: relative; display: block; padding: 24px 22px; border: none; border-left: 6px solid transparent; border-radius: 0; background: #2A2A2A; }
 .item + .item { margin-top: 24px; }
 .item.critical { border-left-color: var(--vscode-editorError-foreground, #f14c4c); }
 .item.medium  { border-left-color: var(--vscode-editorWarning-foreground, #ffcc00); }
@@ -11,8 +11,10 @@ body { font-family: Segoe UI, sans-serif; margin: 0; padding: 16px; }
 .line-badge { margin-left: auto; background: var(--vscode-editorWidget-background, #2b2b2b); color: var(--vscode-foreground, #ddd); border: none; padding: 2px 8px; border-radius: 0; font-size: 12px; font-weight: 700; cursor: pointer; transition: color .15s ease, text-decoration-color .15s ease; }
 .line-badge:hover { color: var(--vscode-textLink-activeForeground, #0e639c); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .item-body { margin-top: 10px; margin-bottom: 12px; color: var(--vscode-descriptionForeground, #b0b0b0); font-size: 12px; line-height: 1.6; }
-.solution { margin-top: 12px; margin-bottom: 12px; background: var(--vscode-editorWidget-background, #2b2b2b); border: none; border-radius: 0; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
+.solution { margin-top: 12px; margin-bottom: 12px; background: #232323; border: 1px solid #323232; border-radius: 0; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
 .visualization-container { margin-top: 14px; }
+.visualization-container summary { list-style: none; cursor: pointer; padding: 0; margin: 0; }
+.visualization-container summary::-webkit-details-marker { display: none; }
 
 .counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 16px 0 28px 0; }
 .count-card { border: none; border-radius: 0; padding: 22px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; cursor: pointer; background: var(--vscode-editor-background, #1e1e1e); }

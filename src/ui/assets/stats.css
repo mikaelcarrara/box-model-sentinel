@@ -1,18 +1,18 @@
 body { font-family: Segoe UI, sans-serif; margin: 0; padding: 16px; }
 .list { border-radius: 8px; border: none; margin-top: 20px; padding: 0; }
-.item { position: relative; display: block; padding: 22px 22px; border: 1px solid var(--vscode-editorWidget-border, #3c3c3c); border-left-width: 6px; border-radius: 10px; background: var(--vscode-editor-background, #1e1e1e); }
+.item { position: relative; display: block; padding: 24px 22px; border: 1px solid var(--vscode-editorWidget-border, #3c3c3c); border-left-width: 6px; border-radius: 10px; background: var(--vscode-editor-background, #1e1e1e); }
 .item + .item { margin-top: 24px; }
 .item.critical { border-left-color: var(--vscode-editorError-foreground, #f14c4c); }
 .item.medium { border-left-color: var(--vscode-editorWarning-foreground, #ffcc00); }
 .item.low { border-left-color: var(--vscode-editorInfo-foreground, #4fc3f7); }
 .item-head { display: flex; align-items: flex-start; gap: 8px; }
-.title { color: var(--vscode-foreground, #ddd); font-size: 14px; font-weight: 600; }
+.title { color: var(--vscode-foreground, #ddd); font-size: 14px; font-weight: 600; line-height: 1.25; margin-bottom: 6px; }
 .title .type { color: var(--vscode-descriptionForeground, #9a9a9a); font-size: 12px; margin-left: 6px; font-weight: 500; }
 .line-badge { margin-left: auto; background: var(--vscode-editorWidget-background, #2b2b2b); color: var(--vscode-foreground, #ddd); border: 1px solid var(--vscode-panel-border, #3c3c3c); padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; transition: color .15s ease, text-decoration-color .15s ease; }
 .line-badge:hover { color: var(--vscode-textLink-activeForeground, #0e639c); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
-.item-body { margin-top: 10px; color: var(--vscode-descriptionForeground, #b0b0b0); font-size: 12px; line-height: 1.55; }
-.solution { margin-top: 12px; background: var(--vscode-editorWidget-background, #2b2b2b); border: 1px solid var(--vscode-input-border, #3c3c3c); border-radius: 6px; padding: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; white-space: pre-wrap; }
-.visualization-container { margin-top: 12px; }
+.item-body { margin-top: 10px; margin-bottom: 12px; color: var(--vscode-descriptionForeground, #b0b0b0); font-size: 12px; line-height: 1.6; }
+.solution { margin-top: 12px; margin-bottom: 12px; background: var(--vscode-editorWidget-background, #2b2b2b); border: 1px solid var(--vscode-input-border, #3c3c3c); border-radius: 6px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
+.visualization-container { margin-top: 14px; }
 
 .counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 16px 0 28px 0; }
 .count-card { border: 1px solid var(--vscode-panel-border, #3c3c3c); border-radius: 8px; padding: 22px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; cursor: pointer; background: var(--vscode-editor-background, #1e1e1e); }

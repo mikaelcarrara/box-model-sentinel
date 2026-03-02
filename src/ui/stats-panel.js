@@ -31,45 +31,19 @@ function getStatsHtml(model, webview, extensionUri) {
     <title>Box Model Sentinel • Stats</title>
   </head>
   <body>
-    <section class="section js-section">
-      <div class="section-head">JS Agent</div>
-      <div class="perfbar"><div class="perfbar-fill" id="perfbar-fill"></div><span class="perfbar-text" id="perfbar-text"></span></div>
-      <div id="alerts"></div>
-    </section>
-
     <section class="section css-section">
-      <div class="section-head">CSS Analysis</div>
-      <div class="actions">
-        <button id="refresh" class="secondary">Atualizar</button>
-        <span class="spacer"></span>
-        <label class="label">Filtro:</label>
-        <select id="filter">
-          <option value="all">Todos</option>
-          <option value="critical">Crítico</option>
-          <option value="medium">Médio</option>
-          <option value="low">Baixo</option>
-        </select>
-        <label class="label">Tipo:</label>
-        <select id="typeFilter">
-          <option value="all">Todos</option>
-          <option value="flex">Flex</option>
-          <option value="grid">Grid</option>
-          <option value="overflow">Overflow</option>
-          <option value="other">Outros</option>
-        </select>
-      </div>
       <div class="counts">
         <div class="count-card critical ${Number(model?.counts?.critical ?? 0) > 0 ? 'has' : 'empty'}">
           <div class="count-num">${Number(model?.counts?.critical ?? 0)}</div>
-          <div class="count-label">Críticos</div>
+          <div class="count-label">CRITICAL</div>
         </div>
         <div class="count-card medium ${Number(model?.counts?.medium ?? 0) > 0 ? 'has' : 'empty'}">
           <div class="count-num">${Number(model?.counts?.medium ?? 0)}</div>
-          <div class="count-label">Médios</div>
+          <div class="count-label">MEDIUM</div>
         </div>
         <div class="count-card low ${Number(model?.counts?.low ?? 0) > 0 ? 'has' : 'empty'}">
           <div class="count-num">${Number(model?.counts?.low ?? 0)}</div>
-          <div class="count-label">Baixos</div>
+          <div class="count-label">LOW</div>
         </div>
       </div>
       <div class="list" id="list"></div>
